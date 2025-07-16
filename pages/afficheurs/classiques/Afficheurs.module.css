@@ -1,0 +1,427 @@
+@font-face {
+	font-family: "Achemine";
+	src: url("../../../src/fonts/Achemine/achemine_normal.eot") format("embedded-opentype"),
+	url("../../../src/fonts/Achemine/achemine_normal.woff") format("woff"),
+	url("../../../src/fonts/Achemine/achemine_normal.ttf") format("truetype"),
+	url("../../../src/fonts/Achemine/achemine_normal.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+.afficheursContainer {
+  min-height: 100vh;
+  padding: 0;
+  font-family: 'Achemine', sans-serif;
+  overflow: hidden; /* Changed from overflow-x to overflow */
+  width: 100vw;
+  max-width: 100vw;
+  box-sizing: border-box;
+  position: relative; /* Needed for pseudo-element positioning */
+}
+
+.departuresBackground {
+  background-color: #003366; /* Dark blue from the image */
+}
+
+.departuresBackground::before {
+  content: 'départs';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: bottom right;
+  font-size: 18vw; /* Adjust size as needed */
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.1); /* Very transparent white */
+  z-index: 1;
+  pointer-events: none;
+  text-transform: lowercase;
+  font-family: 'Achemine', sans-serif;
+}
+
+/* Watermark styling for departures display */
+.watermarkContainer {
+    position: absolute;
+    right: 5vh;
+    bottom: 10vh;
+    width: 23vh;
+    height: 90%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 1200; /* Ensure it is below text content */
+    pointer-events: none; /* Prevent interaction with watermark */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide any overflow */
+    opacity: 0.5; /* Very transparent */
+    background-color: transparent; /* Ensure no background color */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    box-sizing: border-box; /* Ensure padding and borders are included in width/height */
+    text-overflow: ellipsis; /* Prevent text overflow */
+}
+
+.watermarkSVG {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+
+
+/* Ensure bottom info bar is above watermark */
+.bottomInfoBar {
+  z-index: 10; /* Higher than watermark */
+}
+
+
+.arrivalsBackground {
+  background-color: #003366;
+}
+
+.arrivalsBackground::before {
+  content: 'arrivées';
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: bottom right;
+  font-size: 18vw; /* Adjust size as needed */
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.1); /* Very transparent white */
+  z-index: 11;
+  pointer-events: none;
+  text-transform: lowercase;
+  font-family: 'Achemine', sans-serif;
+}
+
+
+.errorMessage, .loadingMessage, .noSchedulesMessage {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+.scheduleListContainer {
+  /* Adjusted height to fit two schedule lists */
+  height: 100vh;
+  max-height: 100vh;
+
+  overflow-y: hidden;
+  position: relative;
+  z-index: 2; /* Ensure it is above the background */
+}
+
+.followingSchedulesTitle {
+  color: white;
+  font-weight: 900;
+  font-size: 2.4rem;
+  margin: 20px 0 10px 20px;
+  padding-top: 50px;
+}
+
+.scheduleList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.scheduleRow {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  height: 90px; /* Adjust height as needed */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+.scheduleRowEven {
+  background-color: #004a8f; /* Lighter blue stripe */
+}
+
+.scheduleRowOdd {
+  background-color: #003366; /* Darker blue stripe */
+}
+
+.firstTwoRows {
+  height: 200px; /* Increased height for first two rows */
+  font-size: 1.2em; /* Increase font size for all children */
+  
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.sncfLogoContainer {
+  position: relative;
+  width: 120px; /* Adjust as needed */
+  height: 80px; /* Adjust as needed */
+}
+
+.statusText {
+  color: white;
+  font-weight: 600;
+  font-size: 1.6rem;
+  white-space: nowrap;
+  padding-left: 0px;
+  width: 120px; /* fixed width to prevent shifting */
+  height: 70px; /* fixed height to prevent shifting */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.trainNumber {
+   color: white;
+  font-weight: 700;
+  font-size: 1.6rem;
+  white-space: nowrap;
+  padding-left: 20px;
+  width: 150px; /* fixed width to prevent shifting */
+  height: 50px; /* fixed height to prevent shifting */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+
+}
+
+.departureTime {
+  color: #ffea00; /* Yellow */
+  font-weight: 900;
+  font-size: 3.8rem;
+  margin-left: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.middleSection {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 25px;
+  overflow: hidden;
+  margin-left: 20px;
+  position: relative;
+  z-index: 2;
+
+}
+
+.destination {
+  color: white;
+  font-weight: 500;
+  font-size: 3.5rem;
+  white-space: nowrap;
+  margin-bottom: 10px; /* Space from served stations */
+  position: relative;
+  z-index: 3;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.firstTwoRows .destination {
+  font-size: 4.5rem; /* Larger text for first two schedules */
+  font-weight: 700;
+}
+
+.scrollDestination {
+  overflow: hidden;
+  position: relative;
+}
+
+.destinationScroll {
+  display: inline-block;
+  animation: destinationScroll 60s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes destinationScroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.servedStations {
+  color: #ffffff; /* Light grey */
+  font-weight: 400;
+  font-size: 5rem;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis;
+  margin-top: 0px;
+  padding-bottom: 20px; /* Space from destination */
+  max-height: 4rem; /* Increased height for better visibility */
+  line-height: 4rem;
+  display: block;
+  position: relative;
+  z-index: 130;
+}
+
+.dotSeparator {
+  color: #ffea00; /* Yellow */
+  font-weight: 900;
+  margin: 0 8px;
+}
+
+.rightSection {
+  margin-left: auto; /* Pushes to the far right */
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px; /* Space from the middle section */
+  position: relative;
+  z-index: 201;
+  padding-right: 0px; /* Space from the edge */
+}
+
+.platform {
+  width: 80px; /* Square-ish */
+  height: 80px;
+  border: 2px solid white;
+  border-radius: 8px;
+  color: white;
+  font-weight: 900;
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 200;
+}
+
+.firstTwoRows .platform {
+  width: 120px; /* Larger platform for first two schedules */
+  height: 120px;
+  font-size: 5rem;
+  border: 3px solid white;
+  border-radius: 12px;
+}
+
+/* Marquee for served stations if needed */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 90%; /* Utiliser toute la largeur disponible */
+  height: 180px; /* Increased height for better visibility */
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+.bottomInfoBar {
+    background-color: transparent;
+    padding: 0 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+.clockContainer {
+    display: flex;
+    align-items: baseline;
+    background-color: #003366;
+    color: white;
+    padding: 10px 20px;
+    font-family: 'Achemine';
+    font-weight: 900;
+    font-size: 1rem;
+    width: 200px;
+    border-radius: 10px;
+    border: 5px solid white;
+}
+
+.clockTime {
+    font-size: 2.5rem;
+    font-weight: 900;
+}
+
+.clockSeconds {
+    font-size: 2rem;
+    font-weight: 900;
+    margin-left: 15px;
+    color: #f5a623;
+}
+
+
+
+/* Animation de défilement en boucle continue */
+.marqueeContent {
+  display: inline-block;
+  white-space: nowrap;
+  width: 1200px; /* Adjust width as needed */
+
+  animation: loopScroll 50s linear infinite;
+  animation-delay: 0s;
+  padding-bottom: 0px;
+  font-size: 4rem;
+  color: #ffffffb7;
+  font-weight: 400;
+  z-index: 140;
+}
+
+@keyframes loopScroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-200%);
+  }
+}
+
+/* Configuration pour une boucle continue */
+.marqueeContent {
+  animation-duration: 20s;
+}
+
+.marqueeContent:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.marqueeContent:nth-child(2) {
+  animation-delay: 15s;
+}
+
+/* Conteneur pour la boucle */
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  height: 180px;
+  position: relative;
+  z-index: 130;
+}
+
+/* Duplication du contenu pour boucle continue */
+.marqueeContent::after {
+  content: attr(data-content);
+  margin-left: 50px;
+}

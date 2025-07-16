@@ -1,0 +1,310 @@
+:root {
+  --primary: #00005B;
+  --secondary: #666666;
+  --success: #0F8548;
+  --info: #4B87D5;
+  --warning: #FFB612;
+  --danger: #CD0037;
+  --light: #F7F7F7;
+  --dark: #333333;
+}
+
+/* SNCF Theme Overrides */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: #000087;
+  border-color: #000087;
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.text-primary {
+  color: var(--primary) !important;
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+/* Header Styles */
+.mastheader {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mastheader .nav-link {
+  color: var(--dark);
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s;
+}
+
+.mastheader .header-icon-link {
+  color: var(--dark);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  min-width: 64px;
+  transition: color 0.2s;
+}
+
+.mastheader .header-icon-link:hover {
+  color: var(--primary);
+}
+
+.mastheader .header-icon-link .material-icons {
+  font-size: 1.5rem;
+}
+
+.mastheader .header-icon-link small {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.mastheader .nav-link:hover,
+.mastheader .nav-link.active {
+  color: var(--primary);
+}
+
+/* Card Styles */
+.card,
+.sncf-card {
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover,
+.sncf-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header,
+.sncf-card-header {
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+}
+
+.card-body,
+.sncf-card-body {
+  padding: 1.5rem;
+}
+
+.badge {
+  padding: 0.5em 1em;
+  font-weight: 500;
+}
+
+/* List Group Styles */
+.list-group-item {
+  padding: 1rem 0;
+  transition: background-color 0.2s;
+}
+
+.list-group-item:hover {
+  background-color: var(--light);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: Avenir, system-ui, -apple-system, sans-serif;
+}
+
+.display-4 {
+  font-weight: 600;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+/* Material Icons alignment */
+.material-icons {
+  vertical-align: middle;
+  font-size: 1.25rem;
+}
+
+/* Main Container */
+.main-container {
+  min-height: calc(100vh - 80px);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Sidebar Styles */
+.sncf-sidebar {
+  width: 300px;
+  min-width: 300PX;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 8000;
+  transition: all 0.3s ease;
+  background-color: white;
+  box-shadow: 1px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.sncf-sidebar-header {
+  flex-shrink: 0;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  background-color: white;
+  z-index: 2;
+}
+
+.sncf-sidebar-header a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  text-decoration: none;
+  width: 100%;
+}
+
+.sidebar-logo-container {
+  flex-shrink: 0;
+  width: 100px;
+  max-width: 40%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-logo {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 28px;
+  object-fit: contain;
+}
+
+.sncf-sidebar-header span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sncf-sidebar-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 91, 0.2) transparent;
+  position: relative;
+}
+
+.sncf-sidebar-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sncf-sidebar-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sncf-sidebar-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 91, 0.2);
+  border-radius: 2px;
+}
+
+.sncf-sidebar-footer {
+  flex-shrink: 0;
+  padding: 1rem;
+  border-top: 1px solid #eee;
+  background-color: white;
+  z-index: 2;
+}
+
+.sncf-nav-section {
+  margin-bottom: 1.5rem;
+}
+
+.sncf-nav-section-title {
+  color: var(--secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.sncf-nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  color: var(--dark);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-radius: 0.25rem;
+  margin: 0.125rem 0.5rem;
+}
+
+.sncf-nav-link:hover {
+  background-color: var(--light);
+  color: var(--primary);
+}
+
+.sncf-nav-link.active {
+  background-color: rgba(0, 0, 91, 0.1);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.sncf-nav-link .material-icons {
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.sncf-nav-group {
+  margin: 0.25rem 0;
+}
+
+.sncf-nav-group-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.sncf-nav-group.open .sncf-nav-group-content {
+  max-height: 500px;
+}
+
+/* Layout */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: var(--light);
+  color: var(--dark);
+}
+
